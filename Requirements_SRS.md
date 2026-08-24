@@ -7,17 +7,21 @@ This single file contains **both** the Functional Requirements (FR-001 → FR-00
 and the Non-Functional Requirements (NFR-001, NFR-002), each with a measurable
 acceptance criterion and a rationale, formatted as an SRS table.
 
+**System story (grounding):** Account Holder links loyalty accounts → points are
+validated → points are converted into **universal exchange credits** → user redeems
+credits for a digital gift card → the voucher is validated/locked to prevent reuse.
+
 ---
 
 ## 1. Functional Requirements
 
 | Req ID | Type | Description ("The system shall…") | Priority | Acceptance Criteria (Pass / Fail) | Rationale |
 |--------|------|-----------------------------------|----------|-----------------------------------|-----------|
-| **FR-001** | Functional | The system shall validate merchant loyalty points, convert them into universal exchange tokens, and generate single-use digital voucher codes. | High | **Pass:** Voucher code generated with a cryptographic checksum. **Fail:** An expired or duplicate voucher is redeemed. | Core value proposition — turns fragmented brand points into spendable, verifiable credit. |
-| **FR-002** | Functional | The system shall allow an Account Holder to link multiple brand loyalty accounts and aggregate their point balances into a single wallet view. | High | **Pass:** After linking, the wallet shows the combined balance of all linked brands within 3 s. **Fail:** A linked brand's points are missing or double-counted. | Aggregation is the entry point for every conversion and redemption flow. |
-| **FR-003** | Functional | The system shall compute the point-to-credit conversion using the current dynamic exchange rate and display the resulting credit amount before the user confirms. | High | **Pass:** Displayed credit equals `points × live_rate` and matches the amount finally credited. **Fail:** Preview and credited amounts differ. | Users must see and approve an accurate rate; prevents disputes and builds trust. |
-| **FR-004** | Functional | The system shall allow an Account Holder to redeem exchange credits for a digital gift card and apply anti-fraud voucher locking so the voucher cannot be reused. | High | **Pass:** Redeemed voucher status becomes `LOCKED`; a second redemption attempt is rejected. **Fail:** The same voucher is redeemed more than once. | Anti-fraud locking protects merchants and the platform's ledger integrity. |
-| **FR-005** | Functional | The system shall let a Merchant Partner configure and update the dynamic exchange rate and validity window for their loyalty points. | Medium | **Pass:** An updated rate takes effect for all conversions initiated after the change and is logged with a timestamp. **Fail:** Conversions use a stale rate after an update is saved. | Merchants need control over their own point economics and promotions. |
+| **FR-001** | Functional | The system shall validate merchant loyalty points, convert them into universal exchange credits, and generate single-use digital voucher codes. | High | **Pass:** Valid points are accepted and converted using the applicable exchange rate, and a unique voucher code is generated when redemption is completed. **Fail:** Expired/invalid points or a duplicate voucher is accepted. | Core functionality of the platform. |
+| **FR-002** | Functional | The system shall allow an Account Holder to link multiple brand loyalty accounts and view their aggregated point balances. | High | **Pass:** Linked loyalty accounts and their valid point balances are displayed in the wallet. **Fail:** A linked account is missing or its points are double-counted. | Enables aggregation of fragmented loyalty points. |
+| **FR-003** | Functional | The system shall calculate universal exchange credits using the applicable dynamic exchange rate and display the resulting credit amount before conversion. | High | **Pass:** Displayed credits equal the selected points multiplied by the applicable exchange rate. **Fail:** The displayed and credited amounts differ. | Ensures transparent and accurate conversion. |
+| **FR-004** | Functional | The system shall allow an Account Holder to redeem universal exchange credits for an available digital gift card and prevent reuse of the generated voucher. | High | **Pass:** Required credits are deducted and the voucher is locked after successful redemption. **Fail:** Redemption succeeds with insufficient credits or a previously used voucher. | Provides the main redemption functionality and prevents fraud. |
+| **FR-005** | Functional | The system shall allow a Merchant Partner to configure and update the dynamic exchange rate for its loyalty points. | Medium | **Pass:** New conversions use the updated rate after it is saved. **Fail:** A conversion uses a previous rate after the update. | Supports the dynamic-rate requirement in the problem statement. |
 
 ---
 
@@ -25,8 +29,8 @@ acceptance criterion and a rationale, formatted as an SRS table.
 
 | Req ID | Type | Description | Priority | Acceptance Criteria (Pass / Fail) | Rationale |
 |--------|------|-------------|----------|-----------------------------------|-----------|
-| **NFR-001** | Non-Functional (Performance & Security) | Point conversion and gift-card redemption operations must process within 250 ms with zero ledger balance drift. | High | **Pass:** Benchmarking under simulated peak load confirms < 250 ms latency and reconciled ledger (drift = 0). **Fail:** Latency exceeds 250 ms or any ledger drift is detected. | Financial trust depends on fast, exact transactions even at peak. |
-| **NFR-002** | Non-Functional (Security & Reliability) | All voucher codes and stored point balances shall be encrypted at rest and in transit, and every conversion/redemption shall be recorded in an immutable, tamper-evident audit log. | High | **Pass:** Data is AES-256 encrypted at rest, TLS 1.2+ in transit, and audit-log entries are append-only with a verifiable hash chain. **Fail:** Any value stored/transmitted in plaintext, or an audit entry can be altered without detection. | Protects against fraud, satisfies financial-compliance and dispute-resolution needs. |
+| **NFR-001** | Non-Functional (Performance & Security) | The system shall process point conversion and gift-card redemption operations within 250 ms with zero ledger balance drift. | High | **Pass:** Testing confirms ≤ 250 ms processing time and zero ledger balance drift under simulated peak load. **Fail:** Processing exceeds 250 ms or ledger drift occurs. | Directly satisfies the provided performance and financial-integrity requirement. |
+| **NFR-002** | Non-Functional (Security) | The system shall ensure that generated voucher codes are unique and cannot be successfully redeemed more than once. | High | **Pass:** A used voucher is rejected on every subsequent redemption attempt. **Fail:** A voucher can be redeemed more than once or duplicate active codes are generated. | Protects against voucher fraud. |
 
 ---
 

@@ -1,73 +1,66 @@
 <mxfile host="app.diagrams.net" type="device">
   <diagram name="UseCaseFlow" id="flow34">
-    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <mxCell id="t" value="Flow — UC-03 Redeem Digital Gift Card (PES1UG24CS221)" style="text;html=1;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="230" y="10" width="420" height="30" as="geometry" />
+          <mxGeometry x="150" y="10" width="420" height="30" as="geometry" />
         </mxCell>
 
         <mxCell id="start" value="Start" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="360" y="50" width="120" height="40" as="geometry" />
+          <mxGeometry x="280" y="50" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="s1" value="Account Holder authenticates (UC-06)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="120" width="200" height="50" as="geometry" />
+        <mxCell id="s1" value="Account Holder selects&#10;&quot;Redeem Gift Card&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s2" value="Link &amp; aggregate loyalty accounts (UC-01)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="200" width="200" height="50" as="geometry" />
+        <mxCell id="s2" value="System displays available&#10;gift cards &amp; amount" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="195" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s3" value="Convert points to exchange credits (UC-02)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="280" width="200" height="50" as="geometry" />
+        <mxCell id="s3" value="Account Holder selects gift card" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="270" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="d1" value="Enough credits for gift card?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="330" y="360" width="180" height="90" as="geometry" />
+        <mxCell id="s4" value="System checks whether&#10;sufficient credits exist" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="345" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s4" value="Redeem digital gift card (UC-03)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="490" width="200" height="50" as="geometry" />
+        <mxCell id="d1" value="Enough credits?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="255" y="425" width="170" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="s5" value="&#171;include&#187; Validate &amp; Lock Voucher (UC-04)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="570" width="200" height="50" as="geometry" />
+        <mxCell id="ins" value="Display&#10;&quot;Insufficient Credits&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="170" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="d2" value="Promotion active?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="330" y="650" width="180" height="90" as="geometry" />
+        <mxCell id="endN" value="End (no redemption)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="510" y="540" width="150" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ext" value="&#171;extend&#187; Apply Promotional Bonus" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="580" y="665" width="180" height="50" as="geometry" />
+        <mxCell id="s5" value="&#171;include&#187; Validate &amp; Lock Voucher" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="545" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s6" value="Settle via Payment Gateway" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="780" width="200" height="50" as="geometry" />
+        <mxCell id="s6" value="Deduct exchange credits" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="615" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="d3" value="Settlement approved?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="330" y="860" width="180" height="90" as="geometry" />
+        <mxCell id="s7" value="Record redemption transaction" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="685" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="roll" value="Roll back debit, release voucher, retry &#8804; 2x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="580" y="875" width="200" height="60" as="geometry" />
+        <mxCell id="s8" value="Issue digital gift-card voucher" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="755" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s7" value="Reconcile ledger + write audit log" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="990" width="200" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="end" value="Voucher issued — End" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="350" y="1080" width="140" height="40" as="geometry" />
+        <mxCell id="endY" value="End (success)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="270" y="825" width="140" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="f0" style="endArrow=block;html=1;" edge="1" parent="1" source="start" target="s1"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="f1" style="endArrow=block;html=1;" edge="1" parent="1" source="s1" target="s2"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="f2" style="endArrow=block;html=1;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f3" style="endArrow=block;html=1;" edge="1" parent="1" source="s3" target="d1"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f4" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="s3"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="405"/><mxPoint x="260" y="305"/></Array></mxGeometry></mxCell>
-        <mxCell id="f5" value="Yes" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="s4"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f6" style="endArrow=block;html=1;" edge="1" parent="1" source="s4" target="s5"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f7" style="endArrow=block;html=1;" edge="1" parent="1" source="s5" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f8" value="Yes" style="endArrow=block;html=1;" edge="1" parent="1" source="d2" target="ext"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f9" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d2" target="s6"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f10" style="endArrow=block;html=1;" edge="1" parent="1" source="ext" target="s6"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="670" y="805"/></Array></mxGeometry></mxCell>
-        <mxCell id="f11" style="endArrow=block;html=1;" edge="1" parent="1" source="s6" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f12" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d3" target="roll"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f13" style="endArrow=block;html=1;" edge="1" parent="1" source="roll" target="d3"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="680" y="990"/><mxPoint x="510" y="990"/></Array></mxGeometry></mxCell>
-        <mxCell id="f14" value="Yes" style="endArrow=block;html=1;" edge="1" parent="1" source="d3" target="s7"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="f15" style="endArrow=block;html=1;" edge="1" parent="1" source="s7" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" style="endArrow=block;html=1;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" style="endArrow=block;html=1;" edge="1" parent="1" source="s4" target="d1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="ins"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" style="endArrow=block;html=1;" edge="1" parent="1" source="ins" target="endN"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f7" value="Yes" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="s5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f8" style="endArrow=block;html=1;" edge="1" parent="1" source="s5" target="s6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f9" style="endArrow=block;html=1;" edge="1" parent="1" source="s6" target="s7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f10" style="endArrow=block;html=1;" edge="1" parent="1" source="s7" target="s8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f11" style="endArrow=block;html=1;" edge="1" parent="1" source="s8" target="endY"><mxGeometry relative="1" as="geometry" /></mxCell>
 
       </root>
     </mxGraphModel>

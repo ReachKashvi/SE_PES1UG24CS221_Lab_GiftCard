@@ -9,12 +9,14 @@
 
 | Actor | Type | Description / Purpose |
 |-------|------|-----------------------|
-| **Account Holder** | Primary (human) | End user who links loyalty accounts, converts points to credits, and redeems digital gift cards. |
-| **Merchant Partner** | Primary (human/organisation) | Brand that issues loyalty points and configures dynamic exchange rates and validity windows. |
-| **Payment / Settlement Gateway** | Secondary (external system) | External service that settles the monetary value of redeemed gift cards and confirms funds. |
-| **Fraud / Voucher-Locking Service** | Secondary (system) | Subsystem that locks single-use vouchers and flags duplicate/expired redemptions. |
+| **Account Holder** | Primary (human) | Links loyalty accounts, converts points to universal exchange credits, redeems digital gift cards, and views transaction history. |
+| **Merchant Partner** | Primary (human/organisation) | Provides the loyalty program and configures the dynamic exchange rate for its loyalty points. |
+| **Loyalty Program System** | Secondary (external system) | External brand loyalty system that provides and validates loyalty-point balances during linking and conversion. |
 
 > The lab requires **at least three actors and at least five use cases** — satisfied below.
+> The Account Holder and Merchant Partner are named explicitly in the problem statement;
+> the Loyalty Program System is a reasonable inference from the requirement to *aggregate and
+> validate merchant loyalty points*.
 
 ---
 
@@ -25,17 +27,40 @@
 | **UC-01** | Link & Aggregate Loyalty Accounts | Account Holder | FR-002 |
 | **UC-02** | Convert Points to Exchange Credits | Account Holder | FR-001, FR-003 |
 | **UC-03** | Redeem Digital Gift Card | Account Holder | FR-004 |
-| **UC-04** | Validate & Lock Voucher (anti-fraud) | Fraud/Voucher-Locking Service | FR-001, FR-004 |
+| **UC-04** | Validate & Lock Voucher | (system, invoked via UC-03) | FR-001, FR-004, NFR-002 |
 | **UC-05** | Configure Dynamic Exchange Rate | Merchant Partner | FR-005 |
-| **UC-06** | Authenticate User | Account Holder / Merchant Partner | NFR-002 |
+| **UC-06** | View Transaction History | Account Holder | — |
+| **UC-07** | Validate Loyalty Points | Merchant Partner / Loyalty Program System | FR-001, FR-002 |
+| **UC-08** | Flag Suspicious Redemption | (system, extends UC-03) | NFR-002 |
 
 ---
 
 ## 3. Relationships (for the UML diagram)
 
-- **«include»** — *Convert Points to Exchange Credits* (UC-02) **always includes** *Validate & Lock Voucher* (UC-04): every conversion generates a locked single-use voucher, so the validation step is mandatory reuse.
-- **«include»** — *Redeem Digital Gift Card* (UC-03) **always includes** *Validate & Lock Voucher* (UC-04).
-- **«extend»** — *Redeem Digital Gift Card* (UC-03) **is optionally extended by** *Apply Promotional Bonus* : when a merchant promotion is active, extra bonus credit is added; otherwise the base flow runs unchanged.
-- **«include»** — *Convert Points to Exchange Credits* (UC-02) and *Redeem Digital Gift Card* (UC-03) both **include** *Authenticate User* (UC-06).
+- **«include»** — *Convert Points to Exchange Credits* (UC-02) **always includes** *Validate Loyalty Points* (UC-07): points must be validated against the loyalty system before they can be converted.
+- **«include»** — *Redeem Digital Gift Card* (UC-03) **always includes** *Validate & Lock Voucher* (UC-04): every redemption generates and locks a single-use voucher to prevent reuse.
+- **«extend»** — *Flag Suspicious Redemption* (UC-08) **optionally extends** *Redeem Digital Gift Card* (UC-03): only abnormal/suspicious redemption attempts trigger the extra fraud-handling behaviour; normal redemptions run unchanged.
+
+> Note on the business flow: conversion (UC-02) does **not** generate a gift-card voucher.
+> Vouchers are generated and locked only during redemption (UC-03 → UC-04). This keeps the
+> sequence consistent: *loyalty points → validate → convert to exchange credits → redeem gift
+> card → validate & lock voucher*.
+
+---
+
+## 4. Actor–Use-Case Connections
+
+```
+Account Holder ─── UC-01 Link & Aggregate Loyalty Accounts
+              ├──── UC-02 Convert Points to Exchange Credits
+              ├──── UC-03 Redeem Digital Gift Card
+              └──── UC-06 View Transaction History
+
+Merchant Partner ─── UC-05 Configure Dynamic Exchange Rate
+                └──── UC-07 Validate Loyalty Points
+
+Loyalty Program System ─── UC-01 Link & Aggregate Loyalty Accounts
+                      └──── UC-07 Validate Loyalty Points
+```
 
 These are visualised in [UseCase_Diagram.md](UseCase_Diagram.md).

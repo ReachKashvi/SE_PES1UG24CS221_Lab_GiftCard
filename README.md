@@ -24,8 +24,10 @@ cards with anti-fraud voucher locking.
 | [Requirements_SRS.md](Requirements_SRS.md) | Combined Functional (FR) + Non-Functional (NFR) requirements, acceptance criteria, rationale — SRS-style table |
 | [Actors_and_UseCases.md](Actors_and_UseCases.md) | Identified actors and use cases |
 | [UseCase_Diagram.md](UseCase_Diagram.md) | UML Use-Case Diagram (with «include» and «extend») |
-| [UseCase_Flow.md](UseCase_Flow.md) | Use-case flow: main success scenario + alternate flows |
-| [diagrams/use_case_diagram.puml](diagrams/use_case_diagram.puml) | PlantUML source for the use-case diagram |
+| [UseCase_Flow.md](UseCase_Flow.md) | Use-case flow (UC-03): main success scenario + alternate flow |
+| [diagrams/usecase_diagram.puml](diagrams/usecase_diagram.puml) | PlantUML source (source of truth) for the use-case diagram |
+| [diagrams/usecase_diagram.drawio](diagrams/usecase_diagram.drawio) | draw.io source for the use-case diagram |
+| [diagrams/usecase_flow.drawio](diagrams/usecase_flow.drawio) | draw.io source for the UC-03 flow |
 
 ---
 

@@ -1,0 +1,39 @@
+@startuml
+title Digital Gift Card & Loyalty Point Exchange - Use Case Diagram (PES1UG24CS221)
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Account Holder" as AH
+actor "Merchant Partner" as MP
+actor "Loyalty Program System" as LPS
+
+rectangle "Digital Gift Card & Loyalty Point Exchange" {
+    usecase "UC-01\nLink & Aggregate\nLoyalty Accounts" as UC1
+    usecase "UC-02\nConvert Points to\nExchange Credits" as UC2
+    usecase "UC-03\nRedeem Digital\nGift Card" as UC3
+    usecase "UC-04\nValidate & Lock\nVoucher" as UC4
+    usecase "UC-05\nConfigure Dynamic\nExchange Rate" as UC5
+    usecase "UC-06\nView Transaction\nHistory" as UC6
+    usecase "UC-07\nValidate Loyalty\nPoints" as UC7
+    usecase "UC-08\nFlag Suspicious\nRedemption" as UC8
+}
+
+' Actor associations
+AH -- UC1
+AH -- UC2
+AH -- UC3
+AH -- UC6
+MP -- UC5
+MP -- UC7
+LPS -- UC1
+LPS -- UC7
+
+' Mandatory reused behaviour
+UC2 ..> UC7 : <<include>>
+UC3 ..> UC4 : <<include>>
+
+' Optional anti-fraud behaviour
+UC8 ..> UC3 : <<extend>>
+
+@enduml
