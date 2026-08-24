@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="UseCaseDiagram" id="uc34">
+    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Use-Case Diagram — Digital Gift Card &amp; Loyalty Point Exchange (PES1UG24CS221)" style="text;html=1;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="10" width="720" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- System boundary -->
+        <mxCell id="sys" value="Digital Gift Card &amp; Loyalty Point Exchange" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=none;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="380" height="680" as="geometry" />
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="AH" value="Account Holder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="MP" value="Merchant Partner" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="655" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FS" value="Fraud / Voucher-Locking Service" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="470" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PG" value="Payment / Settlement Gateway" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="290" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Use cases -->
+        <mxCell id="UC1" value="UC-01&#10;Link &amp; Aggregate&#10;Loyalty Accounts" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UC2" value="UC-02&#10;Convert Points&#10;to Exchange Credits" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="185" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UC3" value="UC-03&#10;Redeem&#10;Digital Gift Card" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UC6" value="UC-06&#10;Authenticate User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="375" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UC4" value="UC-04&#10;Validate &amp; Lock&#10;Voucher" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="470" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UCX" value="Apply&#10;Promotional Bonus" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="430" y="565" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UC5" value="UC-05&#10;Configure Dynamic&#10;Exchange Rate" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="660" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Associations (solid, no arrow) -->
+        <mxCell id="a1" style="endArrow=none;html=1;" edge="1" parent="1" source="AH" target="UC1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="a2" style="endArrow=none;html=1;" edge="1" parent="1" source="AH" target="UC2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="a3" style="endArrow=none;html=1;" edge="1" parent="1" source="AH" target="UC3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="a4" style="endArrow=none;html=1;" edge="1" parent="1" source="MP" target="UC5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="a5" style="endArrow=none;html=1;" edge="1" parent="1" source="FS" target="UC4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="a6" style="endArrow=none;html=1;" edge="1" parent="1" source="UC3" target="PG"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Include (dashed, open arrow) -->
+        <mxCell id="i1" value="&#171;include&#187;" style="endArrow=open;dashed=1;html=1;fontStyle=2;" edge="1" parent="1" source="UC2" target="UC4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="i2" value="&#171;include&#187;" style="endArrow=open;dashed=1;html=1;fontStyle=2;" edge="1" parent="1" source="UC3" target="UC4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="i3" value="&#171;include&#187;" style="endArrow=open;dashed=1;html=1;fontStyle=2;" edge="1" parent="1" source="UC2" target="UC6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="i4" value="&#171;include&#187;" style="endArrow=open;dashed=1;html=1;fontStyle=2;" edge="1" parent="1" source="UC3" target="UC6"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Extend (dashed, open arrow) -->
+        <mxCell id="e1" value="&#171;extend&#187;" style="endArrow=open;dashed=1;html=1;fontStyle=2;strokeColor=#82b366;" edge="1" parent="1" source="UCX" target="UC3"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
