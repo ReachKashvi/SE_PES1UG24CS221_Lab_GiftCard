@@ -157,7 +157,7 @@ class Game:
             return
         self.pellets.remove(cell)
         self.score += 10
-        if MAZE[cell[0]][cell[1]] == "O":
+        if MAZE[cell[0]][cell[1]] == "o":
             self.score += 40
             self.fright_left = FRIGHT_SECONDS
             for ghost in self.ghosts:
