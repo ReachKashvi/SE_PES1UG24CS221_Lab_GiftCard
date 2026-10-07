@@ -33,6 +33,9 @@ FRIGHT_TINTS = {
     "inky": (40, 140, 255),
     "clyde": (60, 200, 150),
 }
+FRUIT_TRIGGERS = (100, 50)
+FRUIT_CELL, FRUIT_POINTS, FRUIT_SECONDS = PLAYER_START, 100, 9.0
+effects = {"fruit_pending": False}
 
 
 def ghost_color(name, mode):
@@ -44,7 +47,8 @@ def ghost_color(name, mode):
 
 def on_pellet_eaten(score, pellets_left):
     """Called after every pellet is eaten; add sound, flashes, or bonus fruit here."""
-    pass
+    if pellets_left in FRUIT_TRIGGERS:
+        effects["fruit_pending"] = True
 
 
 def bonus_life_threshold():
@@ -138,6 +142,8 @@ class Game:
         self.score, self.lives, self.state = 0, 3, "play"
         self.bonus_awarded = 0
         self.clock_time = self.fright_left = self.player_acc = self.ghost_acc = 0.0
+        self.fruit_left = 0.0
+        effects["fruit_pending"] = False
         for ghost in self.ghosts:
             ghost.reset()
 
@@ -158,6 +164,9 @@ class Game:
                 self.direction = d
                 self.player[:] = cell
                 self.eat(tuple(cell))
+                if self.fruit_left > 0 and tuple(cell) == FRUIT_CELL:
+                    self.score += FRUIT_POINTS
+                    self.fruit_left = 0.0
                 return
 
     def eat(self, cell):
@@ -194,6 +203,10 @@ class Game:
             return
         self.clock_time += dt
         self.fright_left = max(0.0, self.fright_left - dt)
+        if effects["fruit_pending"]:
+            effects["fruit_pending"] = False
+            self.fruit_left = FRUIT_SECONDS
+        self.fruit_left = max(0.0, self.fruit_left - dt)
         threshold = bonus_life_threshold()
         if threshold and self.score // threshold > self.bonus_awarded:
             self.bonus_awarded = self.score // threshold
@@ -226,6 +239,12 @@ class Game:
                     pygame.draw.rect(screen, (20, 80, 180), rect.inflate(-4, -4), border_radius=6)
                 elif (r, c) in self.pellets:
                     pygame.draw.circle(screen, (255, 220, 120), rect.center, 3 if value == "." else 7)
+        if self.fruit_left > 0:
+            fx, fy = FRUIT_CELL[1] * TILE + TILE // 2, FRUIT_CELL[0] * TILE + TILE // 2
+            pygame.draw.line(screen, (60, 180, 60), (fx - 4, fy + 2), (fx + 2, fy - 9), 2)
+            pygame.draw.line(screen, (60, 180, 60), (fx + 5, fy + 2), (fx + 2, fy - 9), 2)
+            pygame.draw.circle(screen, (230, 30, 50), (fx - 5, fy + 4), 5)
+            pygame.draw.circle(screen, (230, 30, 50), (fx + 5, fy + 4), 5)
         px, py = self.player[1] * TILE + TILE // 2, self.player[0] * TILE + TILE // 2
         pygame.draw.circle(screen, (255, 220, 20), (px, py), TILE // 2 - 2)
         mouth = pygame.Vector2(self.direction[1], self.direction[0]) * (TILE // 2)
