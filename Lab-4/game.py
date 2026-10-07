@@ -27,11 +27,19 @@ HOUSE_EXIT, HOUSE_CENTER = (7, 10), (9, 10)
 PLAYER_START = (11, 10)
 FRIGHT_SECONDS = 3.0
 PLAYER_STEP, GHOST_STEP = 0.14, 0.17
+FRIGHT_TINTS = {
+    "blinky": (120, 60, 220),
+    "pinky": (200, 90, 230),
+    "inky": (40, 140, 255),
+    "clyde": (60, 200, 150),
+}
 
 
 def ghost_color(name, mode):
     """Return an (r, g, b) colour override for a ghost, or None to keep the default."""
-    pass
+    if mode != "frightened":
+        return None
+    return FRIGHT_TINTS.get(name)
 
 
 def on_pellet_eaten(score, pellets_left):
