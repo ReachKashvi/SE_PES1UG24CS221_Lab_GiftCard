@@ -1,0 +1,7 @@
+Bonus question: Which type is immutable: list or tuple?
+Anil scored 2 grade C
+Divya scored 4 grade A
+Sameer scored 0 grade C
+Class average: 2.0
+Topper: Divya
+Students who sat the exam: Anil, Divya, Sameer | total: 3
