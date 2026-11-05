@@ -1,0 +1,40 @@
+=================================================================
+ Lab 7 - Fuzz testing AFTER fixes - PES1UG24CS221 - tennis_scoring
+ (same fuzz suite, hardened module)
+=================================================================
+
+$ pytest FuzzTest_PES1UG24CS221_tennis_scoring.py -v
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\LENOVO\OneDrive\Desktop\SE_Lab\labvenv\Scripts\python.exe
+hypothesis profile 'default'
+rootdir: C:\Users\LENOVO\OneDrive\Desktop\SE_Lab\SE_PES1UG24CS221_Lab_GiftCard\Lab-7
+plugins: hypothesis-6.170.14
+collecting ... collected 25 items
+
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_no_crash PASSED [  4%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_no_crash PASSED [  8%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_no_crash PASSED [ 12%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_roundtrip PASSED [ 16%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_matches_point_index PASSED [ 20%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_matches_max_minus_min PASSED [ 24%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[None] PASSED [ 28%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[] PASSED [ 32%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[6] PASSED [ 36%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[6-4-2] PASSED [ 40%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[six-four] PASSED [ 44%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[-3-2] PASSED [ 48%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[ ] PASSED [ 52%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[None] PASSED [ 56%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[] PASSED [ 60%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[40] PASSED [ 64%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[40-30-15] PASSED [ 68%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[45-30] PASSED [ 72%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[40-20] PASSED [ 76%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[AD-40] PASSED [ 80%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[None] PASSED [ 84%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[] PASSED [ 88%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[6,,4] PASSED [ 92%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[6, four] PASSED [ 96%]
+FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[,] PASSED [100%]
+
+============================= 25 passed in 4.18s ==============================

@@ -1,0 +1,72 @@
+==================================================================
+ Lab 7 - Fuzz testing BEFORE fixes - PES1UG24CS221 - tennis_scoring
+ (fuzz suite run against the module exactly as given)
+==================================================================
+
+$ pytest FuzzTest_PES1UG24CS221_tennis_scoring.py -q
+FFF...F......F...FFFF....                                                [100%]
+================================== FAILURES ===================================
+E   AttributeError: 'NoneType' object has no attribute 'split'
+    Failing test case: test_parse_score_no_crash(
+        s=None,
+    )
+tennis_scoring.py:2: AttributeError: 'NoneType' object has no attribute 'split'
+  + Exception Group Traceback (most recent call last):
+  |   File "FuzzTest_PES1UG24CS221_tennis_scoring.py", line 60, in test_game_lead_no_crash
+  |     @given(SCORE_TEXT)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "FuzzTest_PES1UG24CS221_tennis_scoring.py", line 63, in test_game_lead_no_crash
+    |     lead = game_lead(s)
+    |            ^^^^^^^^^^^^
+    |   File "tennis_scoring.py", line 8, in game_lead
+    |     return points[first] - points[second]
+    |            ~~~~~~^^^^^^^
+    | KeyError: ''
+    | Failing test case: test_game_lead_no_crash(
+    |     s='-',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "FuzzTest_PES1UG24CS221_tennis_scoring.py", line 63, in test_game_lead_no_crash
+    |     lead = game_lead(s)
+    |            ^^^^^^^^^^^^
+    |   File "tennis_scoring.py", line 7, in game_lead
+    |     first, second = text.split('-')
+    |                     ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_game_lead_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+FuzzTest_PES1UG24CS221_tennis_scoring.py:60: ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+E   AttributeError: 'NoneType' object has no attribute 'split'
+    Failing test case: test_set_spread_no_crash(
+        s=None,
+    )
+tennis_scoring.py:11: AttributeError: 'NoneType' object has no attribute 'split'
+E   AttributeError: 'NoneType' object has no attribute 'split'
+tennis_scoring.py:2: AttributeError: 'NoneType' object has no attribute 'split'
+E   AttributeError: 'NoneType' object has no attribute 'split'
+tennis_scoring.py:7: AttributeError: 'NoneType' object has no attribute 'split'
+E   KeyError: '45'
+tennis_scoring.py:8: KeyError: '45'
+E   KeyError: '20'
+tennis_scoring.py:8: KeyError: '20'
+E   KeyError: 'AD'
+tennis_scoring.py:8: KeyError: 'AD'
+E   AttributeError: 'NoneType' object has no attribute 'split'
+tennis_scoring.py:11: AttributeError: 'NoneType' object has no attribute 'split'
+=========================== short test summary info ===========================
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_no_crash - ...
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_no_crash - Ex...
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_no_crash - A...
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_parse_score_rejects_cleanly[None]
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[None]
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[45-30]
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[40-20]
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_game_lead_rejects_cleanly[AD-40]
+FAILED FuzzTest_PES1UG24CS221_tennis_scoring.py::test_set_spread_rejects_cleanly[None]
+9 failed, 16 passed in 1.84s
