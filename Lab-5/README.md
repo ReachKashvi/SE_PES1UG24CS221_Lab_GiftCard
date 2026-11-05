@@ -1,47 +1,55 @@
-# Lab 5 — Static Code Analysis (Online Examination System)
+# Lab 5: Static Code Analysis — Online Examination System
 
-**Name:** Kashvi Madhu
-**SRN:** PES1UG24CS221
-**Assigned task:** `L5_34_online_exam`
-**Original working repo:** https://github.com/ReachKashvi/L5_34_online_exam
-(fork of `SETAPESU26/L5_34_online_exam` — copied here so Labs 5, 6 and 7 sit together)
+**Your file:** `online_exam.py`
 
-## Files
+Follow the lab handout for the full instructions.
 
-| File | Description |
-|------|-------------|
-| `README_task.md` | The lab task README as given |
-| `online_exam_ORIGINAL_backup.py` | The program before any fixes |
-| `online_exam.py` | The program after fixing all static-analysis findings |
-| `program_output_before.txt` | Program output before the fixes |
-| `program_output_after.txt` | Program output after the fixes (behaviour unchanged) |
-| `pylint_report.txt` / `pylint_report_after.txt` | Pylint, before and after |
-| `flake8_report.txt` / `flake8_report_after.txt` | Flake8, before and after |
-| `bandit_report.txt` / `bandit_report_after.txt` | Bandit, before and after |
-| `issues.md` | Every finding, with cause and fix |
-| `reflection.md` | Write-up / reflection |
-| `demo/old_mod.py`, `demo/new_mod.py` | Before/after comparison copies used in the demo |
+## About the program
 
-## Results
+A small online exam marker. It picks a bonus question, grades each student's answers against an answer key, converts scores into grades, and reports the class average and the topper.
 
-| Tool | Before | After |
-|------|--------|-------|
-| Pylint | findings across style, naming and design | **10.00/10** |
-| Flake8 | style violations reported | **0 findings** (empty report) |
-| Bandit | MD5 hashing, mutable default, `os.system` command injection | **0 issues** (all severities) |
+The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
 
-Program behaviour is unchanged by the fixes — compare `program_output_before.txt`
-with `program_output_after.txt` (the bonus question is random, so only that first
-line differs between runs).
+## What to do
 
-## How to run
+1. **Run it first** and read the output carefully:
 
-```bash
-python -m pip install pylint bandit flake8
+   ```
+   python online_exam.py
+   ```
 
-python online_exam.py
+   It runs a short demonstration and needs no input. Note what it prints, so you can check that it still behaves the same after your fixes.
 
-pylint online_exam.py
-flake8 online_exam.py
-bandit -r online_exam.py
-```
+2. **Install the tools:**
+
+   ```
+   python -m pip install pylint bandit flake8
+   ```
+
+3. **Run the analysis and save the reports:**
+
+   ```
+   python -m pylint online_exam.py > pylint_report.txt
+   python -m bandit -r online_exam.py > bandit_report.txt
+   python -m flake8 online_exam.py > flake8_report.txt
+   ```
+
+4. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
+
+   | Issue | Type | Line(s) | Description | Fix Approach |
+   |-------|------|---------|-------------|--------------|
+   | ...   | ...  | ...     | ...         | ...          |
+
+5. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
+
+6. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
+
+## Deliverables
+
+- `online_exam.py`: your cleaned version, with at least 4 issues fixed.
+- `issues.md`: the completed issue table.
+- `reflection.md`: your answers to the reflection questions.
+
+**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
+
+Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
