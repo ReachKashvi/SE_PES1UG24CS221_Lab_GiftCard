@@ -1,0 +1,24 @@
+================================================================
+ Lab 6 - Branch Coverage - PES1UG24CS221 - tennis_scoring
+================================================================
+
+$ coverage run --branch -m pytest test_tennis_scoring.py      (BEFORE: starter tests only)
+..                                                                       [100%]
+2 passed in 1.52s
+$ coverage report -m
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+tennis_scoring.py      38     24     30      8    32%   6, 8-16, 18, 20, 26, 28, 30, 32, 37-44
+---------------------------------------------------------------
+TOTAL                  38     24     30      8    32%
+
+$ coverage run --branch -m pytest BranchCoverageTest_PES1UG24CS221_tennis_scoring.py   (AFTER)
+...............................                                          [100%]
+31 passed in 3.90s
+$ coverage report -m
+Name                                                 Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------------------
+BranchCoverageTest_PES1UG24CS221_tennis_scoring.py      67      0      0      0   100%
+tennis_scoring.py                                       38      0     30      0   100%
+------------------------------------------------------------------------------------------------
+TOTAL                                                  105      0     30      0   100%
