@@ -1,0 +1,24 @@
+==============================================================
+ Lab 6 - Code (line) Coverage - PES1UG24CS221 - tennis_scoring
+==============================================================
+
+$ coverage run -m pytest test_tennis_scoring.py      (BEFORE: starter tests only)
+..                                                                       [100%]
+2 passed in 1.58s
+$ coverage report -m
+Name                Stmts   Miss  Cover   Missing
+-------------------------------------------------
+tennis_scoring.py      38     24    37%   6, 8-16, 18, 20, 26, 28, 30, 32, 37-44
+-------------------------------------------------
+TOTAL                  38     24    37%
+
+$ coverage run -m pytest CodeCoverageTest_PES1UG24CS221_tennis_scoring.py   (AFTER)
+...................                                                      [100%]
+19 passed in 3.06s
+$ coverage report -m
+Name                                               Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------
+CodeCoverageTest_PES1UG24CS221_tennis_scoring.py      41      0   100%
+tennis_scoring.py                                     38      0   100%
+--------------------------------------------------------------------------------
+TOTAL                                                 79      0   100%
